@@ -1,0 +1,49 @@
+.wrapper {
+  width: 90vw;
+  min-height: 100vh;
+  max-width: 950px;
+  margin: auto;
+  color: var(--secondary);
+  flex-flow: column nowrap;
+  display: flex;
+  line-height: 1.6rem;
+}
+
+.wrapper::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  margin: auto;
+  padding: 2rem 1rem;
+}
+
+.hero {
+  margin-bottom: 3rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 0;
+  color: #ff1111;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.wrapper h1 {
+  margin: 3rem 0 1.5rem;
+}
+
+.wrapper footer p {
+  text-align: center;
+  padding: 0 1rem;
+}
