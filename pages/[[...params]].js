@@ -128,7 +128,8 @@ export default function Home({ pageData, path, redirectUrl }) {
           href={pageData.favicon}
         />
       </Head>
-
+      
+      {/**
       <div className="fakeHeader" />
       <p style={{ margin: "1em", fontSize: "18px" }}>
         We're taking you to your requested page. If you're not redirected automatically, just click {" "}
@@ -146,6 +147,7 @@ export default function Home({ pageData, path, redirectUrl }) {
         aria-hidden="true"
         href="https://fedi.limes.pink/@limes"
       ></a>
+      **/}
     </div>
   );
 }
