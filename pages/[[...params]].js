@@ -2,6 +2,7 @@ import Head from "next/head";
 import { SupabaseAdmin } from "../lib/supabase-admin";
 import { detectRobot } from "../lib/detectRobot";
 import { parse } from 'node-html-parser';
+import { decode } from "he";
 
 export async function getServerSideProps({ req, res, query }) {
 
@@ -54,7 +55,7 @@ export async function getServerSideProps({ req, res, query }) {
   // extrapolate the title, description, and image
   const pageData = {
     title:
-      actualPageDom.querySelector("title")?.innerText || "",
+      decode(actualPageDom.querySelector("title").innerHTML) || "",
 
     description: actualPageDom.querySelector("meta[name='description']")?.getAttribute("content") ||
       actualPageDom.querySelector("meta[property='description']")?.getAttribute("content") || "",
