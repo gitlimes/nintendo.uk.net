@@ -19,7 +19,7 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ rickrolled }) {
-  const [extendedStats, setExtendedStats] = useState(false);
+  const [extendedStats, setExtendedStats] = useState(Number(rickrolled.users) < 1000);
   return (
     <div className={styles.wrapper}>
       <Head>

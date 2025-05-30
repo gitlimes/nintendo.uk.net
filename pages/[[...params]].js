@@ -35,10 +35,10 @@ export async function getServerSideProps({ req, res, query }) {
   const actualUrl = `https://${baseUrl}/${path}`;
 
   // we check if the user has been rickrolled on this page before
-  const rickrolled = Boolean(req.cookies?.[actualUrl]);
+  const rickrolled = Boolean(req.cookies?.[`${encodeURIComponent(`${baseUrl}/${path}`)}`]);
   // if not, we set a cookie
   if (!rickrolled) {
-    res.setHeader("Set-Cookie", `${baseUrl}/${path}=1; path=/; Max-Age=300`);
+    res.setHeader("Set-Cookie", `${encodeURIComponent(`${baseUrl}/${path}`)}==1; path=/; Max-Age=300`);
   }
 
 
