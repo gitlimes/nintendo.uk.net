@@ -55,16 +55,31 @@ export async function getServerSideProps({ req, res, query }) {
   const pageData = {
     title:
       actualPageDom.querySelector("title")?.innerText || "",
-    description: actualPageDom.querySelector("meta[name='description']")?.getAttribute("content") || "",
-    image: actualPageDom.querySelector("meta[name='twitter:image']")?.getAttribute("content") || "",
+
+    description: actualPageDom.querySelector("meta[name='description']")?.getAttribute("content") ||
+      actualPageDom.querySelector("meta[property='description']")?.getAttribute("content") || "",
+
+    image: actualPageDom.querySelector("meta[property='twitter:image']")?.getAttribute("content") ||
+      actualPageDom.querySelector("meta[name='twitter:image']")?.getAttribute("content") ||
+      actualPageDom.querySelector("meta[property='og:image']")?.getAttribute("content") ||
+      actualPageDom.querySelector("meta[name='og:image']")?.getAttribute("content") || "",
+
     twitterCard:
-      actualPageDom.querySelector("meta[property='twitter:card']")?.getAttribute("content") || "",
-    twitterSite: actualPageDom.querySelector("meta[property='twitter:site']")?.getAttribute("content") || "",
-    ogSiteName: actualPageDom.querySelector("meta[property='og:site_name']")?.getAttribute("content") || "",
+      actualPageDom.querySelector("meta[property='twitter:card']")?.getAttribute("content") ||
+      actualPageDom.querySelector("meta[name='twitter:card']")?.getAttribute("content") || "",
+
+    twitterSite: actualPageDom.querySelector("meta[property='twitter:site']")?.getAttribute("content") ||
+      actualPageDom.querySelector("meta[name='twitter:site']")?.getAttribute("content") || "",
+
+    ogSiteName: actualPageDom.querySelector("meta[property='og:site_name']")?.getAttribute("content") ||
+    actualPageDom.querySelector("meta[property='og:site_name']")?.getAttribute("content") || "",
+
     favicon: actualPageDom.querySelector("link[rel='icon']")?.getAttribute("href") ||
       actualPageDom.querySelector("link[rel='shortcut icon']")?.getAttribute("href") ||
       "https://www.nintendo.com/eu/app/media/images/01_website_elements/icons/favicon.ico" || ""
   };
+
+  console.log(pageData)
 
   // if the user has already been rickrolled by the page, we redirect to the actual repo
   const redirectUrl = rickrolled
@@ -91,11 +106,11 @@ export default function Home({ pageData, path, redirectUrl }) {
         <title>{pageData.title}</title>
 
         <meta name="description" content={pageData.description} />
-        <meta name="twitter:card" content={pageData.twitterCard} />
-        <meta name="twitter:site" content={pageData.twitterSite} />
-        <meta name="twitter:title" content={pageData.title} />
-        <meta name="twitter:description" content={pageData.description} />
-        <meta name="twitter:image" content={pageData.image} />
+        <meta property="twitter:card" content={pageData.twitterCard} />
+        <meta property="twitter:site" content={pageData.twitterSite} />
+        <meta property="twitter:title" content={pageData.title} />
+        <meta property="twitter:description" content={pageData.description} />
+        <meta property="twitter:image" content={pageData.image} />
         <meta property="og:title" content={pageData.title} />
         <meta property="og:description" content={pageData.description} />
         <meta property="og:image" content={pageData.image} />
