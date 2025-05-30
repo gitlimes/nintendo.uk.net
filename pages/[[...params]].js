@@ -25,7 +25,7 @@ export async function getServerSideProps({ req, res, query }) {
 
   let baseUrl = "";
   if (req.headers.host.includes("nintenclo.com")) {
-    baseUrl = req.headers.host.replace("nintenclo.com");
+    baseUrl = req.headers.host.replace("nintenclo.com", "nintendo.com");
   } else {
     baseUrl = "nintendo.com"; // local testing without setting up the host
   }
@@ -38,7 +38,7 @@ export async function getServerSideProps({ req, res, query }) {
   const rickrolled = Boolean(req.cookies?.[actualUrl]);
   // if not, we set a cookie
   if (!rickrolled) {
-    res.setHeader("Set-Cookie", `${actualUrl}=1; path=/; Max-Age=300`);
+    res.setHeader("Set-Cookie", `${baseUrl}/${path}=1; path=/; Max-Age=300`);
   }
 
 
@@ -50,8 +50,6 @@ export async function getServerSideProps({ req, res, query }) {
   const actualPage = await fetchActualPage.text();
 
   const actualPageDom = parse(actualPage);
-
-  console.log()
 
   // extrapolate the title, description, and image
   const pageData = {
