@@ -29,6 +29,8 @@ export async function getServerSideProps({ req, res, query }) {
     baseUrl = req.headers.host.replace("nintenclo.com", "nintendo.com");
   } else if (req.headers.host.includes("nintendo.uk.net")) {
     baseUrl = req.headers.host.replace("nintendo.uk.net", "nintendo.com");
+  } else if (req.headers.host.includes("nintendoswitch1.com")) {
+    baseUrl = req.headers.host.replace("nintendoswitch1.com", "nintendo.com");
   } else {
     baseUrl = "nintendo.com"; // local testing without setting up the host
   }
