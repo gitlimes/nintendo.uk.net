@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export async function getServerSideProps() {
   async function getStats() {
-    const statsFetch = await fetch("https://nintenclo.com/api/stats");
+    const statsFetch = await fetch("https://nintendo.uk.net/api/stats");
     const statsJson = await statsFetch.json();
     return statsJson;
   }
@@ -38,7 +38,7 @@ export default function Home({ rickrolled }) {
         />
         <meta
           name="twitter:image"
-          content="https://www.nintenclo.com/twimg.png"
+          content="https://www.nintendo.uk.net/twimg.png"
         />
       </Head>
 
@@ -55,14 +55,14 @@ export default function Home({ rickrolled }) {
           <h1>Usage</h1>
           <p>
             Simply replace <code className="bg">nintendo.com</code> with{" "}
-            <code className="bg">nintenclo.com</code>. The resulting URL
+            <code className="bg">nintendo.uk.net</code>. The resulting URL
             will redirect to the rickroll video, and its social media preview
             will look identical to the official one.
           </p>
           <p>
             For example,{" "}
             <code className="bg">https://www.nintendo.com/us/store/</code> becomes{" "}
-            <code className="bg">https://www.nintenclo.com/us/store/</code>.
+            <code className="bg">https://www.nintendo.uk.net/us/store/</code>.
           </p>
         </div>
 
@@ -106,7 +106,7 @@ export default function Home({ rickrolled }) {
           </a>{" "}
           • Not affiliated with Nintendo or any of its subsidiaries •{" "}
           <a
-            href="https://github.com/gitlimes/nintenclo.com"
+            href="https://github.com/gitlimes/nintendo.uk.net"
             target="_blank"
             rel="noreferrer"
           >

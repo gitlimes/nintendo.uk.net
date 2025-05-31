@@ -27,6 +27,8 @@ export async function getServerSideProps({ req, res, query }) {
   let baseUrl = "";
   if (req.headers.host.includes("nintenclo.com")) {
     baseUrl = req.headers.host.replace("nintenclo.com", "nintendo.com");
+  } else if (req.headers.host.includes("nintendo.uk.net")) {
+    baseUrl = req.headers.host.replace("nintendo.uk.net", "nintendo.com");
   } else {
     baseUrl = "nintendo.com"; // local testing without setting up the host
   }
@@ -73,7 +75,7 @@ export async function getServerSideProps({ req, res, query }) {
       actualPageDom.querySelector("meta[name='twitter:site']")?.getAttribute("content") || "",
 
     ogSiteName: actualPageDom.querySelector("meta[property='og:site_name']")?.getAttribute("content") ||
-    actualPageDom.querySelector("meta[property='og:site_name']")?.getAttribute("content") || "",
+      actualPageDom.querySelector("meta[property='og:site_name']")?.getAttribute("content") || "",
 
     favicon: actualPageDom.querySelector("link[rel='icon']")?.getAttribute("href") ||
       actualPageDom.querySelector("link[rel='shortcut icon']")?.getAttribute("href") ||
@@ -118,7 +120,7 @@ export default function Home({ pageData, path, redirectUrl }) {
         <meta property="og:image:alt" content={pageData.description} />
         <meta
           property="og:url"
-          content={`https://nintenclo.com/${path}`}
+          content={`https://nintendo.uk.net/${path}`}
         />
         <meta property="og:site_name" content={pageData.ogSiteName} />
         <meta property="og:type" content="object" />
@@ -128,7 +130,7 @@ export default function Home({ pageData, path, redirectUrl }) {
           href={pageData.favicon}
         />
       </Head>
-      
+
       {/**
       <div className="fakeHeader" />
       <p style={{ margin: "1em", fontSize: "18px" }}>
