@@ -102,6 +102,16 @@ export default function Home({ rickrolled }) {
             </p>
           )}
         </div>
+
+        <div className={styles.section}>
+          <p>
+            Make sure to also check out{" "}
+            <a href="https://microsoftgithub.com/usage" rel="noreferrer noopener">
+              microsoftgithub.com
+            </a>
+            !
+          </p>
+        </div>
       </div>
 
       <footer>
