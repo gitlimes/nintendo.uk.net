@@ -1,5 +1,5 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/usage.module.css";
 
 import { useState } from "react";
 
@@ -8,7 +8,7 @@ export async function getServerSideProps() {
     const statsFetch = await fetch("https://nintendo.uk.net/api/stats");
 
     if (!statsFetch.ok) {
-      return { rickrolled: null }
+      return { rickrolled: null };
     }
     const statsJson = await statsFetch.json();
     return statsJson;
@@ -23,7 +23,9 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ rickrolled }) {
-  const [extendedStats, setExtendedStats] = useState(Number(rickrolled?.users) < 1000);
+  const [extendedStats, setExtendedStats] = useState(
+    Number(rickrolled?.users) < 1000
+  );
   return (
     <div className={styles.wrapper}>
       <Head>
@@ -59,14 +61,16 @@ export default function Home({ rickrolled }) {
           <h1>Usage</h1>
           <p>
             Simply replace <code className="bg">nintendo.com</code> with{" "}
-            <code className="bg">nintendo.uk.net</code>. The resulting URL
-            will redirect to the rickroll video, and its social media preview
-            will look identical to the official one.
+            <code className="bg">nintendo.uk.net</code>. The resulting URL will
+            redirect to the rickroll video, and its social media preview will
+            look identical to the official one.
           </p>
           <p>
             For example,{" "}
-            <code className="bg">https://www.nintendo.com/en-gb/Games/</code> becomes{" "}
-            <code className="bg">https://www.nintendo.uk.net/en-gb/Games/</code>.
+            <code className="bg">https://www.nintendo.com/en-gb/Games/</code>{" "}
+            becomes{" "}
+            <code className="bg">https://www.nintendo.uk.net/en-gb/Games/</code>
+            .
           </p>
         </div>
 
@@ -79,7 +83,7 @@ export default function Home({ rickrolled }) {
             the domain in my hands, it would have been a waste not to use it to
             rickroll unsuspecting people.
           </p>
-          {rickrolled ?
+          {rickrolled ? (
             <p>
               To date,{" "}
               <code
@@ -88,9 +92,15 @@ export default function Home({ rickrolled }) {
               >
                 {extendedStats ? rickrolled.users : `${rickrolled.kusers}k`}
               </code>{" "}
-              visitors (excluding bots and crawlers) have been rickrolled, and the
-              number keeps growing!
-            </p> : <p>P.S.: If you're looking for the statistics, they are currently unavailable. Please check back later!</p>}
+              visitors (excluding bots and crawlers) have been rickrolled, and
+              the number keeps growing!
+            </p>
+          ) : (
+            <p>
+              P.S.: If you're looking for the statistics, they are currently
+              unavailable. Please check back later!
+            </p>
+          )}
         </div>
       </div>
 

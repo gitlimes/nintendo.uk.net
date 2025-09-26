@@ -12,8 +12,8 @@ body {
   overflow-x: hidden;
   color: #333;
   background: #f4f4f4;
-  font-family: "Fira Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: "Fira Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   font-weight: 400;
   scroll-behavior: smooth;
   font-size: 16px;
@@ -28,11 +28,11 @@ div.fakeHeader {
 }
 
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: underline;
 }
 a:hover {
-  text-decoration: underline;
+  text-decoration: underline 2px;
 }
 
 code {
@@ -50,6 +50,6 @@ code.bg {
 }
 
 ::selection {
-  background: var(--secondary);
-  color: var(--background);
+  background: #333;
+  color: #f4f4f4;
 }
